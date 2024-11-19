@@ -5,42 +5,47 @@ let topFive = [];
 let countries = [];
 
 async function init() {
-    await loadFootballData();  // Ruft die Daten asynchron ab und wartet, bis die Daten geladen sind
+    await loadFootballData();
 }
 
 async function loadFootballData() {
     try {
-        // Headers definieren
         let myHeaders = new Headers();
         myHeaders.append("x-rapidapi-key", API_KEY);
         myHeaders.append("x-rapidapi-host", API_HOST);
 
-        // Optionen für die Anfrage definieren
         let requestOptions = {
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
         };
 
-        // Anfrage an die API senden und auf die Antwort warten
         let response = await fetch(MAIN_URL, requestOptions);
 
-        // Antwort in JSON umwandeln
         let data = await response.json();
 
         globalData = data.response;
 
-        // Daten in der Konsole ausgeben (könnte durch weitere Verarbeitungen ersetzt werden)
         console.log('Whole data', globalData);
 
+        clearContent();
         renderCountriesOne(data);
-        // Hier könntest du die Daten weiterverarbeiten, z. B. in eine Liste hinzufügen
-        // allLeagues.push(data); // Falls du die Daten speichern möchtest
 
     } catch (error) {
-        // Fehlerbehandlung
         console.log('Fehler beim Abrufen der Daten:', error);
     }
+}
+
+
+function clearContent() {
+    let topFiveContainer = document.getElementById('topFive');
+    let countryContainer = document.getElementById('competition');
+
+    topFiveContainer.innerHTML = '';
+    countryContainer.innerHTML = '';
+
+    topFive = [];
+    countries = [];
 }
 
 

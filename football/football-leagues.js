@@ -8,15 +8,6 @@ function renderCompetition(countryName) {
 }
 
 
-function clearContent() {
-    let topFiveContainer = document.getElementById('topFive');
-    let countryContainer = document.getElementById('competition');
-
-    topFiveContainer.innerHTML = '';
-    countryContainer.innerHTML = '';
-}
-
-
 function checkLeague(countryName, competition) {
     if (countryName === competition['country']['name']) {
         showLeague(competition);

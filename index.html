@@ -7,11 +7,12 @@
     <title>Sportapp</title>
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
-    <script src="./football/countries.js"></script>
-    <script src="./football/leagues.js"></script>
-    <script src="basketball.js"></script>
-    <script src="nfl.js"></script>
-    <script src="mma.js"></script>
+    <script src="./football/football-countries.js"></script>
+    <script src="./football/football-leagues.js"></script>
+    <script src="./basketball/basketball-countries.js"></script>
+    <script src="./basketball/basketball-leagues.js"></script>
+    <script src="./american-football/af-leagues.js"></script>
+    <script src="./mma/mma.js"></script>
 </head>
 
 <body onload="init()">
@@ -19,7 +20,7 @@
         <div id="sports">
             <button onclick="loadFootballData()">Football</button>
             <button onclick="loadBasketballData()">Basketball</button>
-            <button onclick="loadNflData()">NFL</button>
+            <button onclick="loadAmericanFootballData()">American Football</button>
             <button onclick="loadMmaData()">MMA</button>
         </div>
     </nav>
