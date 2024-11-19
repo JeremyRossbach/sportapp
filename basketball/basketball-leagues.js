@@ -21,7 +21,7 @@ function showLeague(competition) {
     leaguesContainer.innerHTML += /* html */ `
         <div onclick="renderLeague()" class='container'>
             <img class='logo' src="${competition['logo']}" loading="lazy">
-            <div><b>${competition['name']}</b></div>
+            <div>${competition['name']}</div>
         </div>
     `;
 }

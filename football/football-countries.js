@@ -132,7 +132,7 @@ function showCountry(competition, countryName) {
     countryContainer.innerHTML += /* html */ `
         <div onclick="renderCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
-            <div><b>${competition['country']['name']}</b></div>
+            <div>${competition['country']['name']}</div>
         </div>
     `;
 }
@@ -144,7 +144,7 @@ function showTopFive(competition, countryName) {
     topFiveContainer.innerHTML += /* html */ `
         <div onclick="renderCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
-            <div><b>${competition['country']['name']}</b></div>
+            <div>${competition['country']['name']}</div>
         </div>
     `;
 }

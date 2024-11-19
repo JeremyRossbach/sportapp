@@ -1,6 +1,7 @@
 const BASKETBALL_API_HOST = "v1.basketball.api-sports.io";
 const BASKETBALL_MAIN_URL = "https://v1.basketball.api-sports.io/leagues";
 let basketballGlobalData;
+const now = new Date();
 
 
 async function loadBasketballData() {
@@ -36,8 +37,8 @@ function clearContent() {
     let topFiveContainer = document.getElementById('topFive');
     let countryContainer = document.getElementById('competition');
 
-    topFiveContainer.innerHTML = '';
-    countryContainer.innerHTML = '';
+    topFiveContainer.innerHTML = /* html */ `<div class="topFiveContainer">TOP 5</div>`;
+    countryContainer.innerHTML = /* html */ `<div class="aToZContainer">A - Z</div>`;
 
     topFive = [];
     countries = [];
@@ -109,7 +110,7 @@ function showCountry(competition, countryName) {
     countryContainer.innerHTML += /* html */ `
         <div onclick="renderCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
-            <div><b>${competition['country']['name']}</b></div>
+            <div>${competition['country']['name']}</div>
         </div>
     `;
 }
@@ -121,7 +122,7 @@ function showTopFive(competition, countryName) {
     topFiveContainer.innerHTML += /* html */ `
         <div onclick="renderCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
-            <div><b>${competition['country']['name']}</b></div>
+            <div>${competition['country']['name']}</div>
         </div>
     `;
 }

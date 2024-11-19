@@ -17,16 +17,28 @@
 
 <body onload="init()">
     <nav>
-        <div id="sports">
-            <button onclick="loadFootballData()">Football</button>
-            <button onclick="loadBasketballData()">Basketball</button>
-            <button onclick="loadAmericanFootballData()">American Football</button>
-            <button onclick="loadMmaData()">MMA</button>
+        <div id="nav">
+            <div class="sports">
+                <img class="myLogo" src="./assets/img/placeholder.png" alt="LOGO">
+                <button onclick="loadFootballData()" class="football-btn"><img class="sporticon" src="./assets/img/football-icon.png"> Football</button>
+                <button onclick="loadBasketballData()" class="basketball-btn"><img class="sporticon" src="./assets/img/basketball-icon.png"> Basketball</button>
+                <button onclick="loadAmericanFootballData()" class="americanfootball-btn"><img class="sporticon" src="./assets/img/americanfootball-icon.png"> American Football</button>
+                <button onclick="loadMmaData()" class="mma-btn"><img class="sporticon" src="./assets/img/mma-icon.png"> MMA</button>
+            </div>
+            <div>
+                <button class="search"><img class="search-icon" src="./assets/img/search-icon.png"></button>
+            </div>
+        </div>
+        <div id="calendar-slider">
+            <button class="date-btn">
+                <span>TODAY</span>
+                <span>XX.XX.</span>
+            </button>
         </div>
     </nav>
     <div id="content">
         <div id="topFive">
-            Top 5
+            TOP 5
         </div>
         <div id="competition">
             A - Z
