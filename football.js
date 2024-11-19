@@ -44,7 +44,7 @@ async function loadFootballData() {
 function renderHundredCountries(data) {
     for (let i = 0; i < 100; i++) {
         let compitition = data.response[i];
-        showCountry(compitition);
+        checkCountry(compitition);
     }
     renderTwoHundredCountries(data);
 }
@@ -53,7 +53,7 @@ function renderHundredCountries(data) {
 function renderTwoHundredCountries(data) {
     for (let i = 100; i < 200; i++) {
         let compitition = data.response[i];
-        showCountry(compitition);
+        checkCountry(compitition);
     }
     renderThreeHundredCountries(data);
 }
@@ -62,7 +62,7 @@ function renderTwoHundredCountries(data) {
 function renderThreeHundredCountries(data) {
     for (let i = 200; i < 300; i++) {
         let compitition = data.response[i];
-        showCountry(compitition);
+        checkCountry(compitition);
     }
     renderFourHundredCountries(data);
 }
@@ -73,6 +73,8 @@ function renderFourHundredCountries(data) {
         let compitition = data.response[i];
         checkCountry(compitition);
     }
+    console.log('In top 5:', topFive);
+    console.log('Countries:', countries);
     /* renderFiveHundredCountries(data); */ // continue until end of array
 }
 
@@ -80,13 +82,12 @@ function renderFourHundredCountries(data) {
 function checkCountry(compitition) {
     let countryName = compitition['country']['name'];
 
-    if (!countries.includes(countryName)) {
-        if (inTopFive(countryName)) {
-            topFive.push(countryName);
-        } else {
-            countries.push(countryName);
-        }
-        showCountry(compitition, countryName);
+    if (!countries.includes(countryName) && !inTopFive(countryName)) {
+        showCountry(compitition);
+        pushCountry(countryName);
+    } else if (!topFive.includes(countryName) && inTopFive(countryName)) {
+        showTopFive(compitition);
+        pushCountry(countryName);
     }
 }
 
@@ -100,16 +101,7 @@ function inTopFive(countryName) {
 }
 
 
-function showCountry(compitition, countryName) {
-    if (countries.includes(countryName) && !inTopFive(countryName)) {
-        country(compitition);
-    } else {
-        showTopFive(compitition, countryName);
-    }
-}
-
-
-function country(compitition) {
+function showCountry(compitition) {
     let countryContainer = document.getElementById('compitition');
 
     countryContainer.innerHTML += /* html */ `
@@ -121,16 +113,23 @@ function country(compitition) {
 }
 
 
-function showTopFive(compitition, countryName) {
+function showTopFive(compitition) {
     let topFiveContainer = document.getElementById('topFive');
 
-    if (!topFive.includes(countryName)) {
-        topFiveContainer.innerHTML += /* html */ `
-            <div onclick="showCompetition(${compitition})" class='container'>
-                <img class='logo' src="${compitition['country']['flag']}">
-                <div><b>${compitition['country']['name']}</b></div>
-            </div>
-        `;
+    topFiveContainer.innerHTML += /* html */ `
+        <div onclick="showCompetition(${compitition})" class='container'>
+            <img class='logo' src="${compitition['country']['flag']}">
+            <div><b>${compitition['country']['name']}</b></div>
+        </div>
+    `;
+}
+
+
+function pushCountry(countryName) {
+    if (inTopFive(countryName)) {
+        topFive.push(countryName);
+    } else {
+        countries.push(countryName);
     }
 }
 
