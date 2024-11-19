@@ -1,5 +1,6 @@
 const API_HOST = "v3.football.api-sports.io";
 const MAIN_URL = "https://v3.football.api-sports.io/leagues";
+let globalData;
 let topFive = [];
 let countries = [];
 
@@ -27,10 +28,12 @@ async function loadFootballData() {
         // Antwort in JSON umwandeln
         let data = await response.json();
 
-        // Daten in der Konsole ausgeben (könnte durch weitere Verarbeitungen ersetzt werden)
-        console.log('Whole data', data.response);
+        globalData = data.response;
 
-        renderHundredCountries(data);
+        // Daten in der Konsole ausgeben (könnte durch weitere Verarbeitungen ersetzt werden)
+        console.log('Whole data', globalData);
+
+        renderCountriesOne(data);
         // Hier könntest du die Daten weiterverarbeiten, z. B. in eine Liste hinzufügen
         // allLeagues.push(data); // Falls du die Daten speichern möchtest
 
@@ -41,52 +44,69 @@ async function loadFootballData() {
 }
 
 
-function renderHundredCountries(data) {
-    for (let i = 0; i < 100; i++) {
-        let compitition = data.response[i];
-        checkCountry(compitition);
+function renderCountriesOne(data) {
+    for (let i = 0; i < 200; i++) {
+        let competition = data.response[i];
+        checkCountry(competition);
     }
-    renderTwoHundredCountries(data);
+    renderCountriesTwo(data);
 }
 
 
-function renderTwoHundredCountries(data) {
-    for (let i = 100; i < 200; i++) {
-        let compitition = data.response[i];
-        checkCountry(compitition);
+function renderCountriesTwo(data) {
+    for (let i = 200; i < 400; i++) {
+        let competition = data.response[i];
+        checkCountry(competition);
     }
-    renderThreeHundredCountries(data);
+    renderCountriesThree(data);
 }
 
 
-function renderThreeHundredCountries(data) {
-    for (let i = 200; i < 300; i++) {
-        let compitition = data.response[i];
-        checkCountry(compitition);
+function renderCountriesThree(data) {
+    for (let i = 400; i < 600; i++) {
+        let competition = data.response[i];
+        checkCountry(competition);
     }
-    renderFourHundredCountries(data);
+    renderCountriesFour(data);
 }
 
 
-function renderFourHundredCountries(data) {
-    for (let i = 300; i < 400; i++) {
-        let compitition = data.response[i];
-        checkCountry(compitition);
+function renderCountriesFour(data) {
+    for (let i = 600; i < 800; i++) {
+        let competition = data.response[i];
+        checkCountry(competition);
+    }
+    renderCountriesFive(data);
+}
+
+
+function renderCountriesFive(data) {
+    for (let i = 800; i < 1000; i++) {
+        let competition = data.response[i];
+        checkCountry(competition);
+    }
+    renderCountriesSix(data)
+}
+
+
+function renderCountriesSix(data) {
+    for (let i = 1000; i < 1165; i++) {
+        let competition = data.response[i];
+        checkCountry(competition);
     }
     console.log('In top 5:', topFive);
     console.log('Countries:', countries);
-    /* renderFiveHundredCountries(data); */ // continue until end of array
 }
 
 
-function checkCountry(compitition) {
-    let countryName = compitition['country']['name'];
+function checkCountry(competition) {
+    let countryName = competition['country']['name'];
 
     if (!countries.includes(countryName) && !inTopFive(countryName)) {
-        showCountry(compitition);
+        showCountry(competition, countryName);
         pushCountry(countryName);
     } else if (!topFive.includes(countryName) && inTopFive(countryName)) {
-        showTopFive(compitition);
+        showTopFive(competition, countryName);
         pushCountry(countryName);
     }
 }
@@ -101,25 +121,25 @@ function inTopFive(countryName) {
 }
 
 
-function showCountry(compitition) {
-    let countryContainer = document.getElementById('compitition');
+function showCountry(competition, countryName) {
+    let countryContainer = document.getElementById('competition');
 
     countryContainer.innerHTML += /* html */ `
-        <div onclick="showCompetition(${compitition})" class='container'>
-            <img class='logo' src="${compitition['country']['flag']}">
-            <div><b>${compitition['country']['name']}</b></div>
+        <div onclick="renderCompetition('${countryName}')" class='container'>
+            <img class='logo' src="${competition['country']['flag']}" loading="lazy">
+            <div><b>${competition['country']['name']}</b></div>
         </div>
     `;
 }
 
 
-function showTopFive(compitition) {
+function showTopFive(competition, countryName) {
     let topFiveContainer = document.getElementById('topFive');
 
     topFiveContainer.innerHTML += /* html */ `
-        <div onclick="showCompetition(${compitition})" class='container'>
-            <img class='logo' src="${compitition['country']['flag']}">
-            <div><b>${compitition['country']['name']}</b></div>
+        <div onclick="renderCompetition('${countryName}')" class='container'>
+            <img class='logo' src="${competition['country']['flag']}" loading="lazy">
+            <div><b>${competition['country']['name']}</b></div>
         </div>
     `;
 }
@@ -131,16 +151,4 @@ function pushCountry(countryName) {
     } else {
         countries.push(countryName);
     }
-}
-
-
-function showCompetition(compitition) {
-    let container = document.getElementById('compitition');
-
-    container.innerHTML = '';
-    container.innerHTML += /* html */ `
-        <div>
-            <div><b>${compitition['name']}</b></div>
-        </div>
-    `;
 }
