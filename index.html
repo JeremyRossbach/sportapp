@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <script src="football.js"></script>
+    <script src="basketball.js"></script>
+    <script src="nfl.js"></script>
+    <script src="mma.js"></script>
+</head>
+
+<body onload="init()">
+    <nav>
+        <div id="sports">
+            <button onclick="loadFootballData()">Football</button>
+            <button onclick="loadBasketballData()">Basketball</button>
+            <button onclick="loadNflData()">NFL</button>
+            <button onclick="loadMmaData()">MMA</button>
+        </div>
+    </nav>
+    <div id="topFive">
+        Top 5
+    </div>
+    <div id="compitition">
+        A - Z
+    </div>
+</body>
+
+</html>
