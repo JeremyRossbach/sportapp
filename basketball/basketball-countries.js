@@ -34,18 +34,6 @@ async function loadBasketballData() {
 }
 
 
-function clearContent() {
-    let topFiveContainer = document.getElementById('topFive');
-    let countryContainer = document.getElementById('competition');
-
-    topFiveContainer.innerHTML = /* html */ `<div class="topFiveContainer">TOP 5</div>`;
-    countryContainer.innerHTML = /* html */ `<div class="aToZContainer">A - Z</div>`;
-
-    basketballTopFive = [];
-    basketballCountries = [];
-}
-
-
 function renderBasketballCountriesOne(data) {
     for (let i = 0; i < 100; i++) {
         let competition = data.response[i];
@@ -109,7 +97,7 @@ function showBasketballCountry(competition, countryName) {
     let countryContainer = document.getElementById('competition');
 
     countryContainer.innerHTML += /* html */ `
-        <div onclick="renderBasketballCompetition('${countryName}')" class='container'>
+        <div onclick="renderBasketballLeagues('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
             <div>${competition['country']['name']}</div>
         </div>
@@ -121,7 +109,7 @@ function showBasketballTopFive(competition, countryName) {
     let topFiveContainer = document.getElementById('topFive');
 
     topFiveContainer.innerHTML += /* html */ `
-        <div onclick="renderBasketballCompetition('${countryName}')" class='container'>
+        <div onclick="renderBasketballLeagues('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
             <div>${competition['country']['name']}</div>
         </div>
