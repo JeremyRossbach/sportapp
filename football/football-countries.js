@@ -1,8 +1,8 @@
 const API_HOST = "v3.football.api-sports.io";
 const MAIN_URL = "https://v3.football.api-sports.io/leagues";
-let globalData;
-let topFive = [];
-let countries = [];
+let footballGlobalData;
+let footballTopFive = [];
+let footballCountries = [];
 
 async function init() {
     await loadFootballData();
@@ -24,12 +24,12 @@ async function loadFootballData() {
 
         let data = await response.json();
 
-        globalData = data.response;
+        footballGlobalData = data.response;
 
-        console.log('Whole data', globalData);
+        console.log('Whole data', footballGlobalData);
 
         clearContent();
-        renderCountriesOne(data);
+        renderFootballCountriesOne(data);
 
     } catch (error) {
         console.log('Fehler beim Abrufen der Daten:', error);
@@ -44,80 +44,80 @@ function clearContent() {
     topFiveContainer.innerHTML = '';
     countryContainer.innerHTML = '';
 
-    topFive = [];
-    countries = [];
+    footballTopFive = [];
+    footballCountries = [];
 }
 
 
-function renderCountriesOne(data) {
+function renderFootballCountriesOne(data) {
     for (let i = 0; i < 200; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkFootballCountry(competition);
     }
-    renderCountriesTwo(data);
+    renderFootballCountriesTwo(data);
 }
 
 
-function renderCountriesTwo(data) {
+function renderFootballCountriesTwo(data) {
     for (let i = 200; i < 400; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkFootballCountry(competition);
     }
-    renderCountriesThree(data);
+    renderFootballCountriesThree(data);
 }
 
 
-function renderCountriesThree(data) {
+function renderFootballCountriesThree(data) {
     for (let i = 400; i < 600; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkFootballCountry(competition);
     }
-    renderCountriesFour(data);
+    renderFootballCountriesFour(data);
 }
 
 
-function renderCountriesFour(data) {
+function renderFootballCountriesFour(data) {
     for (let i = 600; i < 800; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkFootballCountry(competition);
     }
-    renderCountriesFive(data);
+    renderFootballCountriesFive(data);
 }
 
 
-function renderCountriesFive(data) {
+function renderFootballCountriesFive(data) {
     for (let i = 800; i < 1000; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkFootballCountry(competition);
     }
-    renderCountriesSix(data)
+    renderFootballCountriesSix(data)
 }
 
 
-function renderCountriesSix(data) {
+function renderFootballCountriesSix(data) {
     for (let i = 1000; i < 1165; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkFootballCountry(competition);
     }
-    console.log('In top 5:', topFive);
-    console.log('Countries:', countries);
+    console.log('In top 5:', footballTopFive);
+    console.log('Countries:', footballCountries);
 }
 
 
-function checkCountry(competition) {
+function checkFootballCountry(competition) {
     let countryName = competition['country']['name'];
 
-    if (!countries.includes(countryName) && !inTopFive(countryName)) {
-        showCountry(competition, countryName);
-        pushCountry(countryName);
-    } else if (!topFive.includes(countryName) && inTopFive(countryName)) {
-        showTopFive(competition, countryName);
-        pushCountry(countryName);
+    if (!footballCountries.includes(countryName) && !inFootballTopFive(countryName)) {
+        showFootballCountry(competition, countryName);
+        pushFootballCountry(countryName);
+    } else if (!footballTopFive.includes(countryName) && inFootballTopFive(countryName)) {
+        showFootballTopFive(competition, countryName);
+        pushFootballCountry(countryName);
     }
 }
 
 
-function inTopFive(countryName) {
+function inFootballTopFive(countryName) {
     return countryName === 'England' ||
         countryName === 'Germany' ||
         countryName === 'Spain' ||
@@ -126,11 +126,11 @@ function inTopFive(countryName) {
 }
 
 
-function showCountry(competition, countryName) {
+function showFootballCountry(competition, countryName) {
     let countryContainer = document.getElementById('competition');
 
     countryContainer.innerHTML += /* html */ `
-        <div onclick="renderCompetition('${countryName}')" class='container'>
+        <div onclick="renderFootballCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
             <div>${competition['country']['name']}</div>
         </div>
@@ -138,11 +138,11 @@ function showCountry(competition, countryName) {
 }
 
 
-function showTopFive(competition, countryName) {
+function showFootballTopFive(competition, countryName) {
     let topFiveContainer = document.getElementById('topFive');
 
     topFiveContainer.innerHTML += /* html */ `
-        <div onclick="renderCompetition('${countryName}')" class='container'>
+        <div onclick="renderFootballCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
             <div>${competition['country']['name']}</div>
         </div>
@@ -150,10 +150,10 @@ function showTopFive(competition, countryName) {
 }
 
 
-function pushCountry(countryName) {
-    if (inTopFive(countryName)) {
-        topFive.push(countryName);
+function pushFootballCountry(countryName) {
+    if (inFootballTopFive(countryName)) {
+        footballTopFive.push(countryName);
     } else {
-        countries.push(countryName);
+        footballCountries.push(countryName);
     }
 }

@@ -1,6 +1,8 @@
 const BASKETBALL_API_HOST = "v1.basketball.api-sports.io";
 const BASKETBALL_MAIN_URL = "https://v1.basketball.api-sports.io/leagues";
 let basketballGlobalData;
+let basketballTopFive = [];
+let basketballCountries = [];
 
 
 async function loadBasketballData() {
@@ -19,12 +21,12 @@ async function loadBasketballData() {
 
         let data = await response.json();
 
-        globalData = data.response;
+        basketballGlobalData = data.response;
 
-        console.log('Whole data', globalData);
+        console.log('Whole data', basketballGlobalData);
 
         clearContent();
-        renderCountriesOne(data);
+        renderBasketballCountriesOne(data);
 
     } catch (error) {
         console.log('Fehler beim Abrufen der Daten:', error);
@@ -39,62 +41,62 @@ function clearContent() {
     topFiveContainer.innerHTML = /* html */ `<div class="topFiveContainer">TOP 5</div>`;
     countryContainer.innerHTML = /* html */ `<div class="aToZContainer">A - Z</div>`;
 
-    topFive = [];
-    countries = [];
+    basketballTopFive = [];
+    basketballCountries = [];
 }
 
 
-function renderCountriesOne(data) {
+function renderBasketballCountriesOne(data) {
     for (let i = 0; i < 100; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkBasketballCountry(competition);
     }
-    renderCountriesTwo(data);
+    renderBasketballCountriesTwo(data);
 }
 
 
-function renderCountriesTwo(data) {
+function renderBasketballCountriesTwo(data) {
     for (let i = 100; i < 200; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkBasketballCountry(competition);
     }
-    renderCountriesThree(data);
+    renderBasketballCountriesThree(data);
 }
 
 
-function renderCountriesThree(data) {
+function renderBasketballCountriesThree(data) {
     for (let i = 200; i < 300; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkBasketballCountry(competition);
     }
-    renderCountriesFour(data);
+    renderBasketballCountriesFour(data);
 }
 
 
-function renderCountriesFour(data) {
+function renderBasketballCountriesFour(data) {
     for (let i = 300; i < 420; i++) {
         let competition = data.response[i];
-        checkCountry(competition);
+        checkBasketballCountry(competition);
     }
-    console.log('In top 5:', topFive);
-    console.log('Countries:', countries);
+    console.log('In top 5:', basketballTopFive);
+    console.log('Countries:', basketballCountries);
 }
 
 
-function checkCountry(competition) {
+function checkBasketballCountry(competition) {
     let countryName = competition['country']['name'];
 
-    if (!countries.includes(countryName) && !inTopFive(countryName)) {
-        showCountry(competition, countryName);
-        pushCountry(countryName);
-    } else if (!topFive.includes(countryName) && inTopFive(countryName)) {
-        showTopFive(competition, countryName);
-        pushCountry(countryName);
+    if (!basketballCountries.includes(countryName) && !inBasketballTopFive(countryName)) {
+        showBasketballCountry(competition, countryName);
+        pushBasketballCountry(countryName);
+    } else if (!basketballTopFive.includes(countryName) && inBasketballTopFive(countryName)) {
+        showBasketballTopFive(competition, countryName);
+        pushBasketballCountry(countryName);
     }
 }
 
 
-function inTopFive(countryName) {
+function inBasketballTopFive(countryName) {
     return countryName === 'USA' ||
         countryName === 'Europe' ||
         countryName === 'China' ||
@@ -103,11 +105,11 @@ function inTopFive(countryName) {
 }
 
 
-function showCountry(competition, countryName) {
+function showBasketballCountry(competition, countryName) {
     let countryContainer = document.getElementById('competition');
 
     countryContainer.innerHTML += /* html */ `
-        <div onclick="renderCompetition('${countryName}')" class='container'>
+        <div onclick="renderBasketballCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
             <div>${competition['country']['name']}</div>
         </div>
@@ -115,11 +117,11 @@ function showCountry(competition, countryName) {
 }
 
 
-function showTopFive(competition, countryName) {
+function showBasketballTopFive(competition, countryName) {
     let topFiveContainer = document.getElementById('topFive');
 
     topFiveContainer.innerHTML += /* html */ `
-        <div onclick="renderCompetition('${countryName}')" class='container'>
+        <div onclick="renderBasketballCompetition('${countryName}')" class='container'>
             <img class='logo' src="${competition['country']['flag']}" loading="lazy">
             <div>${competition['country']['name']}</div>
         </div>
@@ -127,10 +129,10 @@ function showTopFive(competition, countryName) {
 }
 
 
-function pushCountry(countryName) {
-    if (inTopFive(countryName)) {
-        topFive.push(countryName);
+function pushBasketballCountry(countryName) {
+    if (inBasketballTopFive(countryName)) {
+        basketballTopFive.push(countryName);
     } else {
-        countries.push(countryName);
+        basketballCountries.push(countryName);
     }
 }

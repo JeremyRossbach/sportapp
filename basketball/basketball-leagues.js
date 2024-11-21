@@ -1,21 +1,21 @@
-function renderCompetition(countryName) {
+function renderBasketballCompetition(countryName) {
     clearContent();
 
-    for (let i = 0; i < globalData.length; i++) {
-        let competition = globalData[i];
-        checkLeague(countryName, competition);
+    for (let i = 0; i < basketballGlobalData.length; i++) {
+        let competition = basketballGlobalData[i];
+        checkBasketballLeague(countryName, competition);
     }
 }
 
 
-function checkLeague(countryName, competition) {
+function checkBasketballLeague(countryName, competition) {
     if (countryName === competition['country']['name']) {
-        showLeague(competition);
+        showBasketballLeague(competition);
     }
 }
 
 
-function showLeague(competition) {
+function showBasketballLeague(competition) {
     let leaguesContainer = document.getElementById('competition');
 
     leaguesContainer.innerHTML += /* html */ `

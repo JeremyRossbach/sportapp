@@ -1,25 +1,25 @@
-function renderCompetition(countryName) {
+function renderFootballCompetition(countryName) {
     clearContent();
 
-    for (let i = 0; i < globalData.length; i++) {
-        let competition = globalData[i];
-        checkLeague(countryName, competition);
+    for (let i = 0; i < footballGlobalData.length; i++) {
+        let competition = footballGlobalData[i];
+        checkFootballLeague(countryName, competition);
     }
 }
 
 
-function checkLeague(countryName, competition) {
+function checkFootballLeague(countryName, competition) {
     if (countryName === competition['country']['name']) {
-        showLeague(competition);
+        showFootballLeague(competition);
     }
 }
 
 
-function showLeague(competition) {
+function showFootballLeague(competition) {
     let leaguesContainer = document.getElementById('competition');
 
     leaguesContainer.innerHTML += /* html */ `
-        <div onclick="renderLeague()" class='container'>
+        <div onclick="renderFootballLeague()" class='container'>
             <img class='logo' src="${competition['league']['logo']}" loading="lazy">
             <div>${competition['league']['name']}</div>
         </div>
