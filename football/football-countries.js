@@ -102,6 +102,7 @@ function checkFootballCountry(competition) {
         showFootballTopFive(competition, countryName);
         pushFootballCountry(countryName);
     }
+    showAllFootballLeagues(countryName);
 }
 
 
@@ -144,4 +145,15 @@ function pushFootballCountry(countryName) {
     } else {
         footballCountries.push(countryName);
     }
+}
+
+
+function showAllFootballLeagues(countryName) {
+    let numberOfAll = document.getElementById('numberOfAll');
+
+    numberOfAll.onclick = () => renderAllFootballLeagues(countryName);
+
+    numberOfAll.innerHTML = /* html */ `
+    <div class="numberOfAll">${footballGlobalData.length}</div> All Leagues
+    `;
 }

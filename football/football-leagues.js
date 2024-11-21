@@ -1,3 +1,23 @@
+function renderAllFootballLeagues(countryName) {
+    for (let e = 0; e < footballGlobalData.length; e++) {
+        const league = footballGlobalData[e]['league']['name'];
+        allFootballLeagues(countryName, league);
+    }
+}
+
+
+function allFootballLeagues(countryName, league) {
+    let leagues = document.getElementById('competition');
+
+    leagues.innerHTML += /* html */ `
+        <div onclick="renderFootballLeague('${league}', '${countryName}')" class='container'>
+            <img class='logo' src="${competition['league']['logo']}" loading="lazy">
+            <div>${competition['league']['name']}</div>
+        </div>
+    `;
+}
+
+
 function renderFootballLeagues(countryName) {
     clearContent();
     clearTopFive();

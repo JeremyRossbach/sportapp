@@ -75,7 +75,8 @@ button:hover {
     color: #ffffff;
 }
 
-.container {
+.container,
+#all {
     min-height: 71px;
     display: flex;
     align-items: center;
@@ -85,12 +86,43 @@ button:hover {
     background-color: #1A1A1A;
 }
 
+#all {
+    min-height: unset;
+    justify-content: start;
+    padding: 0;
+}
+
+#all:hover {
+    cursor: pointer;
+}
+
+#numberOfAll {
+    width: -webkit-fill-available;
+    min-height: 71px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+.numberOfAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border: 0.5px solid #ffffff8f;
+    border-radius: 4px;
+    background-color: #000000;
+}
+
 .container:hover {
     cursor: pointer;
 }
 
 .logo {
     width: 32px;
+    padding: 10px;
 }
 
 .topFiveContainer,
