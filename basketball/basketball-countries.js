@@ -1,7 +1,6 @@
 const BASKETBALL_API_HOST = "v1.basketball.api-sports.io";
 const BASKETBALL_MAIN_URL = "https://v1.basketball.api-sports.io/leagues";
 let basketballGlobalData;
-const now = new Date();
 
 
 async function loadBasketballData() {
