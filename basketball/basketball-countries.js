@@ -26,11 +26,18 @@ async function loadBasketballData() {
         console.log('Whole data', basketballGlobalData);
 
         clearContent();
+        removeHighlight();
+        highlightCategoryBasketball();
         renderBasketballCountriesOne(data);
 
     } catch (error) {
         console.log('Fehler beim Abrufen der Daten:', error);
     }
+}
+
+
+function highlightCategoryBasketball() {
+    document.getElementById('categoryBasketball').style.borderBottom = '3px solid yellow';
 }
 
 

@@ -19,14 +19,16 @@
     <nav>
         <div id="nav">
             <div class="sports">
-                <img class="myLogo" src="./assets/img/placeholder.png" alt="LOGO">
-                <button onclick="loadFootballData()" class="football-btn"><img class="sporticon" src="./assets/img/football-icon.png"> Football</button>
-                <button onclick="loadBasketballData()" class="basketball-btn"><img class="sporticon" src="./assets/img/basketball-icon.png"> Basketball</button>
-                <button onclick="loadAmericanFootballData()" class="americanfootball-btn"><img class="sporticon" src="./assets/img/americanfootball-icon.png"> American Football</button>
-                <button onclick="loadMmaData()" class="mma-btn"><img class="sporticon" src="./assets/img/mma-icon.png"> MMA</button>
+                <img onclick="start()" class="myLogo" src="./assets/img/placeholder.png" alt="LOGO">
+                <button id="categoryFootball" onclick="loadFootballData()" class="football-btn"><img class="sporticon" src="./assets/img/football-icon.png"> Football</button>
+                <button id="categoryBasketball" onclick="loadBasketballData()" class="basketball-btn"><img class="sporticon" src="./assets/img/basketball-icon.png"> Basketball</button>
+                <button id="categoryAmericanfootball" onclick="loadAmericanFootballData()" class="americanfootball-btn"><img class="sporticon" src="./assets/img/americanfootball-icon.png"> American Football</button>
+                <button id="categoryMma" onclick="loadMmaData()" class="mma-btn"><img class="sporticon" src="./assets/img/mma-icon.png"> MMA</button>
             </div>
             <div>
-                <button class="search"><img class="search-icon" src="./assets/img/search-icon.png"></button>
+                <button class="search">
+                    <img class="search-icon" src="./assets/img/search-icon.png">
+                </button>
             </div>
         </div>
         <div id="calendar-slider">
@@ -93,6 +95,11 @@
         </div>
     </nav>
     <div id="content">
+        <div class="goBackContainer">
+            <button id="goBack" class="goBack">
+                <img class="arrow-icon" src="assets/img/arrow-icon.png">
+            </button>
+        </div>
         <div id="all">
             <div id="numberOfAll"></div>
             <div class="locked"></div>

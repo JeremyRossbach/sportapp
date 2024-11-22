@@ -1,13 +1,13 @@
-function renderAllFootballLeaguesOne(countryName) {
+/* function renderAllFootballLeaguesOne(countryName) {
     for (let e = 0; e < 200; e++) {
         const league = footballGlobalData[e];
         allFootballLeagues(countryName, league);
     }
-    /* renderAllFootballLeaguesTwo(countryName); */
+    renderAllFootballLeaguesTwo(countryName);
 }
 
 
-/* function renderAllFootballLeaguesTwo(countryName) {
+function renderAllFootballLeaguesTwo(countryName) {
     for (let e = 200; e < 400; e++) {
         const league = footballGlobalData[e];
         allFootballLeagues(countryName, league);
@@ -48,23 +48,24 @@ function renderAllFootballLeaguesSix(countryName) {
         const league = footballGlobalData[e];
         allFootballLeagues(countryName, league);
     }
-} */
+}
 
 
 function allFootballLeagues(countryName, league) {
     let leagueName = league['league']['name'];
     let leagues = document.getElementById('competition');
 
-    leagues.innerHTML += /* html */ `
+    leagues.innerHTML += html `
         <div onclick="renderFootballLeague('${leagueName}', '${countryName}')" class='container'>
             <img class='logo' src="${league['league']['logo']}" loading="lazy">
             <div>${league['league']['name']}</div>
         </div>
     `;
-}
+} */
 
 
 function renderFootballLeagues(countryName) {
+    clearAllLeagues();
     clearContent();
     clearTopFive();
 
@@ -72,6 +73,7 @@ function renderFootballLeagues(countryName) {
         let competition = footballGlobalData[i];
         checkFootballLeagues(countryName, competition);
     }
+    addOnclickFootballCountries(); // on wrong position in code ?
 }
 
 
@@ -123,4 +125,16 @@ function showFootballLeague(competition) {
             <div>${competition['league']['name']}</div>
         </div>
     `;
+}
+
+
+function addOnclickFootballCountries() {
+    let goBack = document.getElementById('goBack');
+
+    goBack.onclick = () => goBackToCountries();
+}
+
+
+function goBackToCountries() {
+    loadFootballData();
 }

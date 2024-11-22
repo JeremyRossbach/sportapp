@@ -29,11 +29,18 @@ async function loadFootballData() {
         console.log('Whole data', footballGlobalData);
 
         clearContent();
+        removeHighlight();
+        highlightCategoryFootball();
         renderFootballCountriesOne(data);
 
     } catch (error) {
         console.log('Fehler beim Abrufen der Daten:', error);
     }
+}
+
+
+function highlightCategoryFootball() {
+    document.getElementById('categoryFootball').style.borderBottom = '3px solid yellow';
 }
 
 

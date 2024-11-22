@@ -1,8 +1,10 @@
 body {
+    width: 100vw;
     margin: 0;
     background-color: #000000;
     color: #ffffff;
     font-family: sans-serif, Arial, Helvetica;
+    overflow-x: hidden;
 }
 
 .myLogo {
@@ -11,6 +13,10 @@ body {
     justify-content: center;
     align-items: center;
     padding-inline: 16px;
+}
+
+.myLogo:hover {
+    cursor: pointer;
 }
 
 button:hover {
@@ -39,6 +45,15 @@ button:hover {
     border: none;
 }
 
+.goBack {
+    border: none;
+    background-color: #000000;
+}
+
+.arrow-icon {
+    width: 32px;
+}
+
 .search-icon {
     width: 24px;
 }
@@ -58,8 +73,10 @@ button:hover {
 }
 
 #calendar-slider {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    overflow-x: scroll;
 }
 
 .date-btn {
@@ -144,6 +161,7 @@ button:hover {
     padding: 10px;
 }
 
+.goBackContainer,
 .topFiveContainer,
 .aToZContainer {
     padding: 8px;
@@ -152,4 +170,9 @@ button:hover {
     font-weight: bolder;
     border-bottom: 0.5px solid #ffffff8f;
     background-color: #000000;
+}
+
+.goBackContainer {
+    padding: 0;
+    padding-left: 6px;
 }
