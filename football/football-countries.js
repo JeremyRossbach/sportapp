@@ -151,9 +151,14 @@ function pushFootballCountry(countryName) {
 function showAllFootballLeagues(countryName) {
     let numberOfAll = document.getElementById('numberOfAll');
 
-    numberOfAll.onclick = () => renderAllFootballLeagues(countryName);
+    numberOfAll.onclick = () => renderAllFootballLeaguesOne(countryName);
 
     numberOfAll.innerHTML = /* html */ `
-    <div class="numberOfAll">${footballGlobalData.length}</div> All Leagues
+    <div class="allContainer">
+        <div class="numberOfAll">${footballGlobalData.length}</div> All Leagues
+    </div>
+    <div>
+        <img class="lock" src="assets/img/lock-icon.png">
+    </div>
     `;
 }

@@ -92,21 +92,22 @@ button:hover {
     padding: 0;
 }
 
-#all:hover {
+/* #all:hover {
     cursor: pointer;
-}
+} */
 
 #numberOfAll {
     width: -webkit-fill-available;
     min-height: 71px;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     gap: 16px;
     padding: 16px;
 }
 
 .numberOfAll {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,6 +115,24 @@ button:hover {
     border: 0.5px solid #ffffff8f;
     border-radius: 4px;
     background-color: #000000;
+}
+
+.allContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.locked {
+    position: absolute;
+    width: -webkit-fill-available;
+    height: 103px;
+    background-color: #ffffff1c;
+}
+
+.lock {
+    width: 24px;
 }
 
 .container:hover {
