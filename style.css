@@ -72,6 +72,16 @@ button:hover {
     color: #ffffff;
 }
 
+.americanfootball-btn,
+.mma-btn {
+    background-color: #ffffff1c;
+}
+
+.americanfootball-btn:hover,
+.mma-btn:hover {
+    cursor: default;
+}
+
 #calendar-slider {
     width: 100%;
     display: flex;
