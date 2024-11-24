@@ -5,15 +5,16 @@ body {
     color: #ffffff;
     font-family: sans-serif, Arial, Helvetica;
     overflow-x: hidden;
+    cursor: default;
 }
 
-.myLogo {
+/* .myLogo {
     height: 72px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-inline: 16px;
-}
+} */
 
 .myLogo:hover {
     cursor: pointer;
@@ -28,6 +29,42 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     border-block: 0.5px solid #ffffff8f;
+    background-color: #1A1A1A;
+}
+
+#logo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 16px;
+}
+
+#logoPro,
+#logoAmateur {
+    width: -webkit-fill-available;
+}
+
+#logoPro:hover,
+#logoAmateur:hover {
+    cursor: pointer;
+}
+
+#logoPro {
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logoAmateur {
+    height: 70px;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 148px;
+    border-bottom: 0.5px solid #ffffff8f;
     background-color: #1A1A1A;
 }
 
