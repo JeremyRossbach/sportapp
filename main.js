@@ -9,15 +9,16 @@ function start() {
 
 
 function level() {
-    let pro = document.getElementById('logoPro');
     let amateur = document.getElementById('logoAmateur');
-    let arrow = document.getElementById('');
+    let arrow = document.getElementById('arrow-down');
 
     if (!openLevelSwitch) {
         amateur.style.display = 'flex';
+        arrow.innerHTML = '▲';
         openLevelSwitch = true;
     } else {
         amateur.style.display = 'none';
+        arrow.innerHTML = '▼';
         openLevelSwitch = false;
     }
 }
@@ -26,6 +27,7 @@ function level() {
 function switchLevel() {
     let pro = document.getElementById('logoPro');
     let amateur = document.getElementById('logoAmateur');
+    let arrow = document.getElementById('arrow-down');
 
     if (proLevel) {
         pro.innerHTML = 'LOGO AMATEUR';
@@ -37,6 +39,12 @@ function switchLevel() {
         amateur.innerHTML = 'LOGO AMATEUR';
         proLevel = true;
         openLevelSwitch = false;
+    }
+
+    if (!openLevelSwitch) {
+        arrow.innerHTML = '▼';
+    } else {
+        arrow.innerHTML = '▲';
     }
     amateur.style.display = 'none';
 }
@@ -77,9 +85,20 @@ function clearContent() {
 
 
 function clearAllLeagues() {
-    let all = document.getElementById('all');
+    let numberOfAll = document.getElementById('numberOfAll');
+    let locked = document.getElementById('locked');
 
-    all.innerHTML = '';
+    numberOfAll.style.display = 'none';
+    locked.style.display = 'none';
+}
+
+
+function dfNumberOfAll() {
+    let numberOfAll = document.getElementById('numberOfAll');
+    let locked = document.getElementById('locked');
+
+    numberOfAll.style.display = 'flex';
+    locked.style.display = 'flex';
 }
 
 

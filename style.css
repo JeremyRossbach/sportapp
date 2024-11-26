@@ -32,7 +32,12 @@ button:hover {
     background-color: #1A1A1A;
 }
 
+#arrow-down:hover {
+    cursor: pointer;
+}
+
 #logo {
+    width: 160px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -189,8 +194,9 @@ button:hover {
     gap: 16px;
 }
 
-.locked {
+#locked {
     position: absolute;
+    display: flex;
     width: -webkit-fill-available;
     height: 103px;
     background-color: #ffffff1c;
@@ -220,7 +226,8 @@ button:hover {
     background-color: #000000;
 }
 
-.goBackContainer {
+#goBackContainer {
+    display: none;
     padding: 0;
     padding-left: 6px;
 }

@@ -73,7 +73,6 @@ function renderFootballLeagues(countryName) {
         let competition = footballGlobalData[i];
         checkFootballLeagues(countryName, competition);
     }
-    addOnclickFootballCountries(); // on wrong position in code ?
 }
 
 
@@ -94,6 +93,7 @@ function showFootballLeagues(countryName, competition) {
             <div>${competition['league']['name']}</div>
         </div>
     `;
+    addOnclickFootballCountries(); // on wrong position in code ?
 }
 
 
@@ -129,12 +129,32 @@ function showFootballLeague(competition) {
 
 
 function addOnclickFootballCountries() {
+    let goBackContainer = document.getElementById('goBackContainer');
     let goBack = document.getElementById('goBack');
 
+    goBackContainer.style.display = 'flex';
     goBack.onclick = () => goBackToCountries();
 }
 
 
+function addOnclickFootballCountries() {
+    let goBackContainer = document.getElementById('goBackContainer');
+    let goBack = document.getElementById('goBack');
+
+    goBackContainer.style.display = 'flex';
+    goBack.onclick = () => goBackToCountries();
+}
+
+
+function dnGoBackContainer() {
+    let goBackContainer = document.getElementById('goBackContainer');
+
+    goBackContainer.style.display = 'none';
+}
+
+
 function goBackToCountries() {
+    dnGoBackContainer();
+    dfNumberOfAll();
     loadFootballData();
 }
