@@ -121,10 +121,52 @@ function showFootballLeague(competition) {
 
     leagueContainer.innerHTML += /* html */ `
         <div onclick="renderFootballLeague()" class='container'>
-            <img class='logo' src="${competition['league']['logo']}" loading="lazy">
-            <div>${competition['league']['name']}</div>
+            <img class='leagueLogo' src="${competition['league']['logo']}" loading="lazy">
+            <div onclick="switchYear()" class="leagueInfoContainer">
+                <div class="leagueName">${competition['league']['name']}</div>
+                <div class="year">
+                    Season 
+                    <div id="year"></div>
+                    <div id="yearArrow">▼</div>
+                </div>
+            </div>
         </div>
     `;
+    renderYear(competition);
+}
+
+
+function renderYear(competition) {
+    for (let a = 0; a < competition['seasons'].length; a++) {
+        const season = competition['seasons'][a];
+        showYear(season);
+    }
+}
+
+
+function showYear(season) {
+    if (season['year'] === 2020) {
+        year(season, 2020);
+    } else if (season['year'] === 2021) {
+        year(season, 2021);
+    } else if (season['year'] === 2022) {
+        year(season, 2022);
+    }
+}
+
+
+function year(season, seasonYear) {
+    let year = document.getElementById('year');
+
+    year.innerHTML = /* html */ `
+        <div>${seasonYear}</div>
+    `;
+    renderLeaguesTable(season, seasonYear);
+}
+
+
+function renderLeaguesTable(season, yearNumber) {
+
 }
 
 

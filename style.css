@@ -231,3 +231,30 @@ button:hover {
     padding: 0;
     padding-left: 6px;
 }
+
+.leagueInfoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+}
+
+.leagueLogo {
+    width: 48px;
+    padding: 10px;
+}
+
+.leagueName {
+    font-size: 24px;
+}
+
+.year {
+    display: flex;
+    gap: 8px;
+}
+
+#yearArrow {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
