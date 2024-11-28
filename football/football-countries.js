@@ -123,6 +123,27 @@ function inFootballTopFive(countryName) {
 
 
 function showFootballCountry(competition, countryName) {
+    if (competition['country']['flag'] === null) {
+        footballCountryNoFlag(competition, countryName);
+    } else {
+        footballCountry(competition, countryName);
+    }
+}
+
+
+function footballCountryNoFlag(competition, countryName) {
+    let countryContainer = document.getElementById('competition');
+
+    countryContainer.innerHTML += /* html */ `
+        <div onclick="renderFootballLeagues('${countryName}')" class='container'>
+            <img class='logo' src="assets/img/world-flag.png" loading="lazy">
+            <div>${competition['country']['name']}</div>
+        </div>
+    `;
+}
+
+
+function footballCountry(competition, countryName) {
     let countryContainer = document.getElementById('competition');
 
     countryContainer.innerHTML += /* html */ `
