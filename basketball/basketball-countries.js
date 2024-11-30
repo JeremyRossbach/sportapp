@@ -85,9 +85,10 @@ function checkBasketballCountry(competition) {
         showBasketballCountry(competition, countryName);
         pushBasketballCountry(countryName);
     } else if (!basketballTopFive.includes(countryName) && inBasketballTopFive(countryName)) {
-        showBasketballTopFive(competition, countryName);
+        showBasketballTopFiveCountry(competition, countryName);
         pushBasketballCountry(countryName);
     }
+    showAllBasketballLeagues(countryName);
 }
 
 
@@ -101,6 +102,27 @@ function inBasketballTopFive(countryName) {
 
 
 function showBasketballCountry(competition, countryName) {
+    if (competition['country']['flag'] === null) {
+        basketballCountryNoFlag(competition, countryName);
+    } else {
+        basketballCountry(competition, countryName);
+    }
+}
+
+
+function basketballCountryNoFlag(competition, countryName) {
+    let countryContainer = document.getElementById('competition');
+
+    countryContainer.innerHTML += /* html */ `
+        <div onclick="renderBasketballLeagues('${countryName}')" class='container'>
+            <img class='logo' src="assets/img/world-flag.png" loading="lazy">
+            <div>${competition['country']['name']}</div>
+        </div>
+    `;
+}
+
+
+function basketballCountry(competition, countryName) {
     let countryContainer = document.getElementById('competition');
 
     countryContainer.innerHTML += /* html */ `
@@ -112,7 +134,28 @@ function showBasketballCountry(competition, countryName) {
 }
 
 
-function showBasketballTopFive(competition, countryName) {
+function showBasketballTopFiveCountry(competition, countryName) {
+    if (competition['country']['flag'] === 'https://media.api-sports.io/flags/ .svg') {
+        basketballTopFiveCountryNoFlag(competition, countryName);
+    } else {
+        basketballTopFiveCountry(competition, countryName);
+    }
+}
+
+
+function basketballTopFiveCountryNoFlag(competition, countryName) {
+    let topFiveContainer = document.getElementById('topFive');
+
+    topFiveContainer.innerHTML += /* html */ `
+        <div onclick="renderBasketballLeagues('${countryName}')" class='container'>
+            <img class='logo' src="assets/img/world-flag.png" loading="lazy">
+            <div>${competition['country']['name']}</div>
+        </div>
+    `;
+}
+
+
+function basketballTopFiveCountry(competition, countryName) {
     let topFiveContainer = document.getElementById('topFive');
 
     topFiveContainer.innerHTML += /* html */ `
@@ -130,4 +173,20 @@ function pushBasketballCountry(countryName) {
     } else {
         basketballCountries.push(countryName);
     }
+}
+
+
+function showAllBasketballLeagues(countryName) {
+    let numberOfAll = document.getElementById('numberOfAll');
+
+    numberOfAll.onclick = () => renderAllFootballLeaguesOne(countryName);
+
+    numberOfAll.innerHTML = /* html */ `
+    <div class="allContainer">
+        <div class="numberOfAll">${footballGlobalData.length}</div> All Leagues
+    </div>
+    <div>
+        <img class="lock" src="assets/img/lock-icon.png">
+    </div>
+    `;
 }
