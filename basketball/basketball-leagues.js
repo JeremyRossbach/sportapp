@@ -44,7 +44,7 @@ function renderBasketballLeague(league, countryName) {
 
 
 function checkBasketballLeague(league, countryName, competition) {
-    if (league === competition['name'] && countryName === competition['name']) {
+    if (league === competition['name'] && countryName === competition['country']['name']) {
         showBasketballLeague(competition);
     }
 }
@@ -54,7 +54,7 @@ function showBasketballLeague(competition) {
     let leagueContainer = document.getElementById('competition');
 
     leagueContainer.innerHTML += /* html */ `
-        <div onclick="renderFootballLeague()" class='container'>
+        <div onclick="renderBasketballLeague()" class='container'>
             <img class='leagueLogo' src="${competition['logo']}" loading="lazy">
             <div onclick="switchYear()" class="leagueInfoContainer">
                 <div class="leagueName">${competition['name']}</div>
