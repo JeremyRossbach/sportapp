@@ -79,12 +79,12 @@ function renderYear(competition) {
 
 
 function showYear(season) {
-    if (season['year'] === 2020) {
-        year(season, 2020);
-    } else if (season['year'] === 2021) {
-        year(season, 2021);
-    } else if (season['year'] === 2022) {
-        year(season, 2022);
+    if (season['season'] === '2019-2020') {
+        year(season, '2019-2020');
+    } else if (season['season'] === '2020-2021') {
+        year(season, '2020-2021');
+    } else if (season['season'] === '2021-2022') {
+        year(season, '2021-2022');
     }
 }
 
