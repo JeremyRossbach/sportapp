@@ -1,5 +1,7 @@
 function renderBasketballLeagues(countryName) {
+    clearAllLeagues();
     clearContent();
+    clearTopFive();
 
     for (let i = 0; i < basketballGlobalData.length; i++) {
         let competition = basketballGlobalData[i];
