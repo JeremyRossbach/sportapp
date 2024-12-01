@@ -84,7 +84,7 @@ function checkFootballLeagues(countryName, competition) {
 
 
 function showFootballLeagues(countryName, competition) {
-    let league = competition['league']['name']
+    let league = competition['league']['name'];
     let leaguesContainer = document.getElementById('competition');
 
     leaguesContainer.innerHTML += /* html */ `

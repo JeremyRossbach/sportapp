@@ -12,18 +12,125 @@ function renderBasketballLeagues(countryName) {
 
 function checkBasketballLeagues(countryName, competition) {
     if (countryName === competition['country']['name']) {
-        showBasketballLeagues(competition);
+        showBasketballLeagues(countryName, competition);
     }
 }
 
 
-function showBasketballLeagues(competition) {
+function showBasketballLeagues(countryName, competition) {
+    let league = competition['name'];
     let leaguesContainer = document.getElementById('competition');
 
     leaguesContainer.innerHTML += /* html */ `
-        <div onclick="renderBasketballLeague()" class='container'>
+        <div onclick="renderBasketballLeague('${league}', '${countryName}')" class='container'>
             <img class='logo' src="${competition['logo']}" loading="lazy">
             <div>${competition['name']}</div>
         </div>
     `;
+    addOnclickFootballCountries(); // on wrong position in code ?
+}
+
+
+function renderBasketballLeague(league, countryName) {
+    clearContent();
+    clearTopFive();
+    clearCategories();
+
+    for (let i = 0; i < basketballGlobalData.length; i++) {
+        let competition = basketballGlobalData[i];
+        checkBasketballLeague(league, countryName, competition);
+    }
+}
+
+
+function checkBasketballLeague(league, countryName, competition) {
+    if (league === competition['name'] && countryName === competition['name']) {
+        showBasketballLeague(competition);
+    }
+}
+
+
+function showBasketballLeague(competition) {
+    let leagueContainer = document.getElementById('competition');
+
+    leagueContainer.innerHTML += /* html */ `
+        <div onclick="renderFootballLeague()" class='container'>
+            <img class='leagueLogo' src="${competition['logo']}" loading="lazy">
+            <div onclick="switchYear()" class="leagueInfoContainer">
+                <div class="leagueName">${competition['name']}</div>
+                <div class="year">
+                    Season 
+                    <div id="year"></div>
+                    <div id="yearArrow">▼</div>
+                </div>
+            </div>
+        </div>
+    `;
+    renderYear(competition);
+}
+
+
+function renderYear(competition) {
+    for (let a = 0; a < competition['seasons'].length; a++) {
+        const season = competition['seasons'][a];
+        showYear(season);
+    }
+}
+
+
+function showYear(season) {
+    if (season['year'] === 2020) {
+        year(season, 2020);
+    } else if (season['year'] === 2021) {
+        year(season, 2021);
+    } else if (season['year'] === 2022) {
+        year(season, 2022);
+    }
+}
+
+
+function year(season, seasonYear) {
+    let year = document.getElementById('year');
+
+    year.innerHTML = /* html */ `
+        <div>${seasonYear}</div>
+    `;
+    renderLeaguesTable(season, seasonYear);
+}
+
+
+function renderLeaguesTable(season, yearNumber) {
+
+}
+
+
+function addOnclickFootballCountries() {
+    let goBackContainer = document.getElementById('goBackContainer');
+    let goBack = document.getElementById('goBack');
+
+    goBackContainer.style.display = 'flex';
+    goBack.onclick = () => goBackToCountries();
+}
+
+
+function addOnclickFootballCountries() {
+    let goBackContainer = document.getElementById('goBackContainer');
+    let goBack = document.getElementById('goBack');
+
+    goBackContainer.style.display = 'flex';
+    goBack.onclick = () => goBackToCountries();
+}
+
+
+function dnGoBackContainer() {
+    let goBackContainer = document.getElementById('goBackContainer');
+
+    goBackContainer.style.display = 'none';
+}
+
+
+function goBackToCountries() {
+    dnGoBackContainer();
+    dfNumberOfAll();
+    loadFootballData();
 }
