@@ -27,7 +27,7 @@ function showBasketballLeagues(countryName, competition) {
             <div>${competition['name']}</div>
         </div>
     `;
-    addOnclickFootballCountries(); // on wrong position in code ?
+    addOnclickBasketballCountries(); // on wrong position in code ?
 }
 
 
@@ -104,16 +104,7 @@ function renderLeaguesTable(season, yearNumber) {
 }
 
 
-function addOnclickFootballCountries() {
-    let goBackContainer = document.getElementById('goBackContainer');
-    let goBack = document.getElementById('goBack');
-
-    goBackContainer.style.display = 'flex';
-    goBack.onclick = () => goBackToCountries();
-}
-
-
-function addOnclickFootballCountries() {
+function addOnclickBasketballCountries() {
     let goBackContainer = document.getElementById('goBackContainer');
     let goBack = document.getElementById('goBack');
 
@@ -132,5 +123,5 @@ function dnGoBackContainer() {
 function goBackToCountries() {
     dnGoBackContainer();
     dfNumberOfAll();
-    loadFootballData();
+    loadBasketballData();
 }
